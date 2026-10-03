@@ -276,7 +276,7 @@
     </div>
     <div class="card" style="margin-top:20px">
       <label class="field" for="nick" style="margin-top:0">판정관 이름</label>
-      <input class="text" id="nick" type="text" maxlength="12" placeholder="이름 또는 닉네임을 입력합니다" autocomplete="off">
+      <input class="text" id="nick" type="text" maxlength="12" placeholder="이름 또는 별명을 입력하십시오" autocomplete="off">
       <div class="hint" id="nickHint" aria-live="polite"></div>
       <button class="btn block" type="button" id="startBtn">판정 시작하기</button>
     </div>
@@ -525,7 +525,7 @@
   /* ---------- 시작 ---------- */
   function start(){
     var v = $('nick').value.trim();
-    if(!v){ $('nickHint').textContent = '이름 또는 닉네임을 입력합니다.'; $('nick').focus(); return; }
+    if(!v){ $('nickHint').textContent = '판정관 이름을 입력하십시오.'; $('nick').focus(); return; }
     $('nickHint').textContent = '';
     state.nick = v;
     show(1);
