@@ -208,6 +208,13 @@
   .pill.yes{ background:#E3F3E9; color:#22633F; } .pill.yes .i{ background:#2E7D53; }
   .pill.part{ background:#FBF0D9; color:#80520F; } .pill.part .i{ background:#B7791F; }
   .pill.no{ background:#FBE7E4; color:#9E2F26; } .pill.no .i{ background:#C1443A; }
+  .chk-score{ margin-left:auto; font-size:15px; font-weight:700; color:#C4553A; }
+  .chk{ list-style:none; margin:6px 0 0; padding:0; display:flex; flex-direction:column; gap:6px; }
+  .chk li{ font-size:14.5px; line-height:1.55; padding:8px 10px; border-radius:8px; border:1px solid #EAD9CF; background:#FFFFFF; color:#3A2A24; }
+  .chk li b{ display:inline-block; font-size:12.5px; padding:1px 7px; border-radius:999px; margin-right:4px; color:#fff; background:#2E7D53; }
+  .chk li.miss b{ background:#C4553A; }
+  .chk li.miss{ background:#FFF4EE; }
+  .chk li span{ color:#6E5348; font-size:13.5px; }
   .tally{ margin-top:8px; font-size:14.5px; color:#6E5348; text-align:right; }
   .order{ position:relative; background:#FDF0E9; border:1.5px solid #E5BBA6; border-radius:12px; padding:16px 16px 16px; }
   .order p{ margin:0; font-family:"Gowun Batang", serif; font-size:18px; font-weight:700; line-height:1.7; color:#2E1E18; padding-right:84px; }
@@ -340,6 +347,11 @@
           </div>
 
           <div class="doc-sec">
+            <div class="lbl">개인 점검 — 참고 판정과 비교 <span class="chk-score" id="dScore"></span></div>
+            <ul class="chk" id="dCheck"></ul>
+          </div>
+
+          <div class="doc-sec">
             <div class="lbl">주문</div>
             <div class="order">
               <p id="dOrder"></p>
@@ -420,6 +432,54 @@
     {t:'공개성', s:'공익을 위해 법을 어긴다면 모든 사람들에게 공개적으로 밝힐 수 있어야 한다.'},
     {t:'처벌 감수', s:'사회 정의 실현의 의도를 가지고 있더라도 위법 행위에 대한 처벌을 받아들여야 한다.'}
   ];
+
+  /* ---------- 개인 점검용 참고 판정 (사례 설명과 교과서 기준) ---------- */
+  var KEY = {
+    gandhi: [
+      [['yes'], '식민 지배 아래의 부당한 소금법을 바꾸려는 공익적 목적입니다.'],
+      [['yes'], '간디는 비폭력을 강조하였습니다.'],
+      [['yes','part'], '합법적인 수단을 먼저 다 썼는지는 사례 설명만으로 분명하지 않아 ○와 △를 모두 인정합니다.'],
+      [['yes'], '법을 공개적으로 어겼습니다.'],
+      [['yes','part'], '사례 설명에 처벌 감수가 직접 나오지는 않아 ○와 △를 모두 인정합니다.']
+    ],
+    april19: [
+      [['yes'], '부정 선거에 항의한 민주적·공익적 목적입니다.'],
+      [['part','yes'], '평화 시위가 중심이었지만 충돌도 있었으므로 △를 기본으로 보고 ○도 인정합니다.'],
+      [['yes','part'], '부정 선거를 바로잡을 합법적 수단이 막혀 있었다는 점에서 ○와 △를 인정합니다.'],
+      [['yes'], '거리에서 공개적으로 뜻을 밝혔습니다.'],
+      [['part','no'], '정부의 퇴진으로 이어져 법 안에서 처벌을 받아들이는 행위와는 거리가 있습니다. 롤스는 시민불복종을 혁명과 구별합니다.']
+    ],
+    umbrella: [
+      [['yes'], '진정한 보통 선거를 요구한 공익적 목적입니다.'],
+      [['yes','part'], '우산이 상징하듯 비폭력 점거가 중심이었습니다.'],
+      [['part','yes'], '오랜 점거에 앞서 합법적 수단을 다 썼는지는 판단이 갈립니다.'],
+      [['yes'], '도심에서 공개적으로 요구를 밝혔습니다.'],
+      [['part','yes'], '사례 설명에 처벌 감수가 직접 나오지 않아 △를 기본으로 보고 ○도 인정합니다.']
+    ],
+    king: [
+      [['yes'], '흑인 차별 철폐라는 공익적 목적입니다.'],
+      [['yes'], '승차 거부·행진·연좌 농성 같은 비폭력 방법을 썼습니다.'],
+      [['yes','part'], '차별적인 법과 제도가 오래 유지된 상황이었다는 점에서 ○와 △를 인정합니다.'],
+      [['yes'], '공개적인 행진과 농성으로 맞섰습니다.'],
+      [['yes'], '킹 목사는 여러 차례 체포되었고 이를 받아들였습니다.']
+    ],
+    school: [
+      [['yes','part'], '부당한 차별을 바로잡으려는 목적이지만 2학년만의 이익으로 볼 여지도 있어 ○와 △를 인정합니다.'],
+      [['yes'], '조용히 책을 읽는 비폭력 방법입니다.'],
+      [['yes'], '학생회를 통한 건의가 받아들여지지 않은 뒤에 행동하였습니다.'],
+      [['yes'], '미리 뜻을 밝혔습니다.'],
+      [['yes'], '벌점을 받아들이겠다고 말하였습니다.']
+    ]
+  };
+  function checkKey(){
+    var k = KEY[state.caseId] || [], ok = 0;
+    var rows = CONDS.map(function(cd, i){
+      var acc = k[i] ? k[i][0] : [], hit = acc.indexOf(state.marks[i]) >= 0; if(hit) ok++;
+      var ref = acc.map(function(v){ return ICON[v]; }).join(' / ');
+      return '<li class="' + (hit ? 'hit' : 'miss') + '"><b>' + (hit ? '일치' : '다시 보기') + '</b> ' + cd.t + ' — 내 판정 ' + ICON[state.marks[i]] + ', 참고 ' + ref + '<br><span>' + (k[i] ? k[i][1] : '') + '</span></li>';
+    }).join('');
+    return { ok: ok, html: rows };
+  }
   var LABEL = {yes:'충족', part:'부분 충족', no:'미충족'};
   var ICON = {yes:'○', part:'△', no:'✕'};
 
@@ -636,6 +696,7 @@
         '<td class="rs"><span class="pill ' + v + '"><span class="i">' + ICON[v] + '</span>' + LABEL[v] + '</span></td></tr>';
     }).join('');
     $('dTally').textContent = '충족 ' + r.yes + ' · 부분 충족 ' + r.part + ' · 미충족 ' + r.no;
+    var ck = checkKey(); $('dScore').textContent = ck.ok + ' / 5 일치'; $('dCheck').innerHTML = ck.html;
     $('dOrder').textContent = r.order;
     $('dStamp').innerHTML = r.stamp;
     $('dStamp').className = 'stamp' + (r.cls ? ' ' + r.cls : '');
