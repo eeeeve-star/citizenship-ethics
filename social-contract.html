@@ -7,7 +7,7 @@
 <meta name="description" content="현대사회와 윤리 Ⅳ-02 시민과 국가의 관계 — 홉스·로크·루소의 사회 계약론과 국가 권위의 정당성">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&family=Gaegu:wght@700&display=swap">
 <style>
   :root{
     --bg:#E8F1FC;
@@ -325,6 +325,99 @@
     padding:12px 16px; border-radius:0 10px 10px 0; color:var(--ink); margin:0 0 10px;
   }
 
+  .deepen .body b{ color:var(--c-ink, var(--ink)); }
+  .deepen .body ul{ margin:0 0 10px; padding-left:20px; }
+  .deepen .body li{ margin-bottom:6px; }
+
+  /* ---------- view switch (개념 정리 / 문제 풀기) ---------- */
+  .view-switch{ display:flex; gap:4px; background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:3px; flex:0 0 auto; }
+  .view-switch button{
+    border:0; background:transparent; color:var(--ink-soft); font:inherit; font-size:14px; font-weight:700;
+    padding:6px 13px; border-radius:999px; cursor:pointer; white-space:nowrap;
+  }
+  .view-switch button[aria-selected="true"]{ background:var(--accent); color:var(--surface); }
+  .view-switch button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  body.practice .topnav{ visibility:hidden; }
+  @media (max-width:640px){ body.practice .topnav{ display:none; } body.practice .view-switch{ margin-left:auto; } }
+
+  /* ---------- practice ---------- */
+  .practice-hero{ padding:44px 0 8px; }
+  .practice-hero h1{ font-size:clamp(30px, 5.4vw, 42px); margin:0 0 12px; line-height:1.25; }
+  .practice-hero p{ color:var(--ink-soft); max-width:64ch; margin:0 0 10px; font-size:17px; }
+  .prob{ margin:26px 0 0; }
+  .prob-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
+  .prob-no{
+    display:inline-flex; align-items:center; justify-content:center; min-width:40px; height:40px; padding:0 10px;
+    border-radius:12px; background:var(--accent); color:var(--surface); font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:20px;
+  }
+  .prob-pt{ font-size:13px; font-weight:700; color:var(--accent-ink); background:var(--accent-soft); padding:3px 10px; border-radius:999px; }
+  .prob-lv{ display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:700; padding:3px 10px; border-radius:999px; background:var(--surface-2); color:var(--ink-soft); }
+  .prob-lv .st{ letter-spacing:1px; color:#E0A21B; }
+  .prob-lv.lv-3{ background:var(--bad-soft); color:var(--bad); }
+  .prob-src{ margin-left:auto; font-size:13.5px; color:var(--ink-faint); }
+  @media (max-width:560px){ .prob-src{ margin-left:0; flex-basis:100%; } }
+  .prob-q{ font-size:18.5px; font-weight:700; margin:0 0 16px; line-height:1.55; }
+  .prob-q u{ text-underline-offset:4px; text-decoration-thickness:2px; }
+
+  .speakers{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:18px; }
+  @media (max-width:640px){ .speakers{ grid-template-columns:1fr; } }
+  .speaker{ display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .speech{
+    position:relative; width:100%; background:var(--surface); border:2px solid var(--line-strong);
+    border-radius:18px; padding:14px 16px; font-size:16.5px; line-height:1.7; flex:1;
+  }
+  .speech::after{
+    content:""; position:absolute; bottom:-10px; left:50%; width:16px; height:16px; margin-left:-8px;
+    background:var(--surface); border-right:2px solid var(--line-strong); border-bottom:2px solid var(--line-strong); transform:rotate(45deg);
+  }
+  .fig{ display:flex; align-items:center; gap:8px; margin-top:4px; }
+  .fig svg{ width:64px; height:64px; }
+  .fig .nm{ font-family:"Gowun Batang", serif; font-weight:700; font-size:20px; }
+  .passage{ background:var(--surface-2); border:1.5px solid var(--line-strong); border-radius:16px; padding:16px 18px; margin-bottom:18px; }
+  .passage p{ margin:0 0 10px; font-size:16.5px; line-height:1.75; display:flex; gap:8px; }
+  .passage p:last-child{ margin-bottom:0; }
+  .passage .who-lbl{ flex:0 0 auto; font-weight:900; }
+  .bogi{ border:1.5px solid var(--line-strong); border-radius:16px; padding:22px 18px 14px; margin:8px 0 18px; position:relative; background:var(--surface); }
+  .bogi::before{ content:"[보기]"; position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--surface); padding:0 10px; font-weight:700; font-size:15px; color:var(--ink-soft); }
+  .bogi p{ margin:0 0 8px; font-size:16.5px; display:flex; gap:8px; }
+  .bogi p:last-child{ margin-bottom:0; }
+  .bogi .mk{ flex:0 0 auto; font-weight:700; }
+  .bogi .ox{ margin-left:auto; flex:0 0 auto; font-weight:900; display:none; }
+  .prob.done .bogi .ox{ display:inline; }
+
+  .clue{ border-radius:4px; transition:background .2s, box-shadow .2s; }
+  .prob.show-clues .clue{ background:var(--c-soft-2); box-shadow:0 2px 0 var(--c); font-weight:700; }
+  .who-reveal{ display:none; flex-wrap:wrap; gap:8px; margin:0 0 16px; }
+  .prob.show-clues .who-reveal{ display:flex; animation:fadein .25s ease; }
+  .who-chip{ display:inline-flex; align-items:center; gap:8px; border:1.5px solid var(--c); background:var(--c-soft); color:var(--c-ink); border-radius:999px; padding:4px 14px 4px 4px; font-weight:700; font-size:15.5px; }
+  .who-chip img{ width:30px; height:30px; border-radius:50%; background:#fff; object-fit:cover; }
+
+  .choices{ display:flex; flex-direction:column; gap:8px; margin-bottom:14px; }
+  .choice{
+    display:flex; gap:10px; align-items:flex-start; text-align:left; width:100%;
+    border:1.5px solid var(--line-strong); background:var(--surface); color:var(--ink);
+    border-radius:13px; padding:11px 14px; font:inherit; font-size:16.5px; line-height:1.55; cursor:pointer;
+  }
+  .choice:hover{ background:var(--surface-2); }
+  .choice:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .choice:disabled{ cursor:default; }
+  .choice:disabled:hover{ background:var(--surface); }
+  .choice .n{ flex:0 0 auto; font-weight:700; }
+  .choice .res{ margin-left:auto; flex:0 0 auto; font-weight:900; }
+  .choice.correct, .choice.correct:disabled:hover{ border-color:var(--good); background:var(--good-soft); }
+  .choice.wrong, .choice.wrong:disabled:hover{ border-color:var(--bad); background:var(--bad-soft); }
+  .prob-tools{ display:flex; gap:8px; flex-wrap:wrap; }
+  .btn.ghost{ background:var(--surface); color:var(--accent-ink); }
+  .btn.ghost:hover{ background:var(--accent-soft); }
+  .explain{ display:none; margin-top:16px; }
+  .prob.done .explain{ display:block; animation:fadein .25s ease; }
+  .explain ul{ list-style:none; margin:10px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
+  .explain li{ display:flex; gap:10px; font-size:15.5px; background:var(--surface-2); border-radius:10px; padding:9px 12px; line-height:1.6; }
+  .explain li .o{ flex:0 0 auto; font-weight:900; min-width:20px; }
+  .explain li b{ color:var(--ink); }
+  .ox.t, .explain li .o.t{ color:var(--good); }
+  .ox.f, .explain li .o.f{ color:var(--bad); }
+
   /* ---------- compare ---------- */
   .tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
   .tab{
@@ -460,7 +553,7 @@
   .fc-summary .common-line{ color:var(--ink-soft); font-size:15px; margin-top:12px; text-align:center; }
 
   footer{ margin-top:40px; padding-top:22px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:13.5px; text-align:center; }
-  footer .signature{ font-size:15px; font-weight:700; color:var(--rousseau-ink); margin-top:8px; letter-spacing:0.04em; }
+  footer .signature{ font-family:"Gaegu",cursive; font-size:21px; font-weight:700; color:var(--rousseau-ink); margin-top:8px; }
 
   @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.01ms !important; transition:none !important; } html{ scroll-behavior:auto; } }
 </style>
@@ -480,11 +573,16 @@
       <a href="#quiz">퀴즈</a>
       <a href="#recap">흐름도</a>
     </nav>
+    <div class="view-switch" role="tablist" aria-label="화면 선택">
+      <button type="button" role="tab" data-view="learn" aria-selected="true">개념 정리</button>
+      <button type="button" role="tab" data-view="practice" aria-selected="false">문제 풀기</button>
+    </div>
     <button class="theme-btn" id="theme-btn" type="button" aria-label="밝은/어두운 화면 바꾸기" title="밝은/어두운 화면 바꾸기">◐</button>
   </div>
 </div>
 
 <div class="wrap">
+<div id="view-learn">
 
   <!-- ================= HERO ================= -->
   <section class="hero">
@@ -541,15 +639,16 @@
     </div>
 
     <div class="steps3">
-      <div class="step"><span class="k">① 자연 상태</span><div class="v">모든 사람이 모든 사람과 싸우는 <b>&lsquo;만인의 만인에 대한 투쟁&rsquo;</b> 상태</div></div>
-      <div class="step"><span class="k">② 계약을 맺는 이유</span><div class="v">투쟁 속에서 살아남기 위해, 곧 <b>자기 보존</b>을 위해</div></div>
-      <div class="step"><span class="k">③ 그 결과</span><div class="v">사람들이 계약을 맺어 <b>국가를 형성</b>함</div></div>
+      <div class="step"><span class="k">① 자연 상태</span><div class="v">모든 사람이 모든 사람과 싸우는 <b>&lsquo;만인의 만인에 대한 투쟁&rsquo;</b> 상태. 모두를 다스릴 <b>공통 권력</b>이 없어서 <b>선악(옳고 그름)에 대한 공통 기준</b>도 없음.</div></div>
+      <div class="step"><span class="k">② 계약을 맺는 이유</span><div class="v">투쟁 속에서 살아남기 위해, 곧 <b>자기 보존</b>과 <b>평화</b>를 위해.</div></div>
+      <div class="step"><span class="k">③ 그 결과</span><div class="v">자연권을 <b>절대적 주권자(리바이어던)</b>에게 넘겨주는 계약을 맺어 <b>국가를 형성</b>함.</div></div>
     </div>
 
     <div class="callout">
       <span class="icon">🏫</span>
       <div>홉스의 눈으로 보면 규칙 없는 우리 반은 곧 <b>모두가 모두를 경계하는 곳</b>이 됩니다. 누구도 마음 편히 지낼 수 없으니, 자신을 지키기 위해 모두가 지킬 <b>학급 규칙(계약)</b>을 만들게 됩니다.</div>
     </div>
+
   </section>
 
   <!-- ================= LOCKE ================= -->
@@ -569,9 +668,9 @@
     </div>
 
     <div class="steps3">
-      <div class="step"><span class="k">① 자연 상태</span><div class="v">사람들은 <b>평등, 자유 및 집행권</b>을 가지고 있음</div></div>
-      <div class="step"><span class="k">② 계약을 맺는 이유</span><div class="v"><b>생명과 재산을 보호받기 위해</b> 평등·자유·집행권을 <b>입법부</b>가 처리하도록 사회의 수중에 <b>양도</b>함</div></div>
-      <div class="step"><span class="k">③ 그 결과</span><div class="v">정부가 생명과 재산을 지키지 못하면 시민은 <b>저항권</b>을 행사할 수 있음</div></div>
+      <div class="step"><span class="k">① 자연 상태</span><div class="v">사람들은 <b>평등, 자유 및 집행권</b>을 가지고 있음. <b>비교적 평화롭지만</b> 공동의 법과 <b>공정한 재판관</b>이 없어 생명·자유·재산이 <b>확실하게 보장되지 않음</b>.</div></div>
+      <div class="step"><span class="k">② 계약을 맺는 이유</span><div class="v"><b>생명과 재산을 보호받기 위해</b> 자연법을 어긴 사람을 스스로 처벌하던 <b>자연법 집행권</b>을 포기하고, <b>입법부</b>가 처리하도록 사회의 수중에 <b>양도</b>함.</div></div>
+      <div class="step"><span class="k">③ 그 결과</span><div class="v"><b>입법권과 집행권의 분립</b>에 따라 국가가 운영됨. 정부가 생명과 재산을 지키지 못하면 시민은 <b>저항권</b>을 행사할 수 있음.</div></div>
     </div>
 
     <div class="callout">
@@ -586,6 +685,8 @@
         <p>저항권은 이후 <b>시민불복종 운동</b>에 영향을 주었습니다. 부정의한 법에 맞서는 시민불복종의 뿌리가 바로 로크의 저항권입니다.</p>
       </div>
     </details>
+
+
   </section>
 
   <!-- ================= ROUSSEAU ================= -->
@@ -605,15 +706,29 @@
     </div>
 
     <div class="steps3">
-      <div class="step"><span class="k">① 자연 상태</span><div class="v">처음에는 <b>평화로운</b> 상태</div></div>
-      <div class="step"><span class="k">② 무엇이 문제일까</span><div class="v"><b>사유 재산이 증가</b>하면서 점차 <b>불평등과 예속</b> 상태에 놓이게 됨</div></div>
-      <div class="step"><span class="k">③ 계약과 그 결과</span><div class="v">불평등과 예속에서 <b>벗어나기 위해</b> 사회 계약을 맺고 국가를 형성함</div></div>
+      <div class="step"><span class="k">① 자연 상태</span><div class="v">처음에는 <b>평화로운</b> 상태.</div></div>
+      <div class="step"><span class="k">② 무엇이 문제일까</span><div class="v"><b>사유 재산이 증가</b>하면서 점차 <b>불평등하고 불안정한</b> 상태, 곧 <b>예속</b> 상태에 놓이게 됨.</div></div>
+      <div class="step"><span class="k">③ 계약과 그 결과</span><div class="v">자신의 <b>생명을 보존</b>하고 <b>자유를 회복</b>하기 위해 사회 계약을 맺고 국가를 형성함. <b>주권은 국민에게</b> 있으며, 정부는 <b>일반 의지</b>를 대행함.</div></div>
     </div>
 
     <div class="callout">
       <span class="icon">🏫</span>
       <div>루소의 눈으로 보면 우리 반은 <b>처음엔 평화롭습니다.</b> 그런데 &ldquo;이 자리는 내 거야!&rdquo; 하며 각자의 몫이 늘어나자, 많이 가진 사람과 못 가진 사람이 생기고 못 가진 사람은 가진 사람에게 <b>매이게(예속)</b> 됩니다. 이 상태를 벗어나려고 다 함께 <b>학급 규칙(계약)</b>을 맺는 것입니다.</div>
     </div>
+
+
+    <details class="deepen">
+      <summary>일반 의지란 무엇일까? <span class="badge">더 알아보기</span></summary>
+      <div class="body">
+        <p class="tb-quote"><b>일반 의지</b>: 전체 시민으로 형성된 주권자가 지닌 의지로서, 언제나 <b>공공 이익만을 지향</b>하는 의지</p>
+        <ul>
+          <li>일반 의지는 각자 자기 이익만 바라는 마음을 단순히 더한 것이 아니라, 공동체 <b>모두의 이익</b>을 향합니다.</li>
+          <li>주권은 이 일반 의지를 지닌 <b>국민에게</b> 있고, 정부는 일반 의지를 <b>대행</b>할 뿐입니다.</li>
+          <li>내가 함께 만든 일반 의지에 따르는 것은 곧 <b>나 자신에게 따르는 것</b>이므로, 복종하면서도 자유로울 수 있습니다.</li>
+        </ul>
+        <p>💡 루소의 자연 상태가 평화로운 까닭: 자연 상태의 인간은 자기를 보존하려는 마음과 함께 남의 고통을 안타까워하는 <b>동정심(연민)</b>을 지니고 있어서 서로 해치지 않고 지냅니다.</p>
+      </div>
+    </details>
   </section>
 
   <!-- ================= COMPARE ================= -->
@@ -640,7 +755,7 @@
 
   <!-- ================= QUIZ ================= -->
   <section class="scene" id="quiz">
-    <div class="eyebrow"><span class="num">6</span>확인 퀴즈</div>
+    <div class="eyebrow"><span class="num">5</span>확인 퀴즈</div>
     <h2>이 말, 누가 했을까?</h2>
     <p>말풍선 속 주장을 읽고, 누구의 생각인지 골라 봅시다.</p>
     <div class="card quiz" id="quiz-card" aria-live="polite"></div>
@@ -648,7 +763,7 @@
 
   <!-- ================= RECAP ================= -->
   <section class="scene" id="recap">
-    <div class="eyebrow"><span class="num">7</span>흐름도</div>
+    <div class="eyebrow"><span class="num">6</span>흐름도</div>
     <h2>한눈에 정리하기</h2>
     <p>자연 상태에서 출발해 국가가 생기기까지, 세 갈래 길을 한 번에 따라가 봅시다.</p>
 
@@ -664,12 +779,24 @@
 
     <div class="fc-summary">
       <h3>세 줄 요약</h3>
-      <p><span class="h">홉스</span> : 만인의 만인에 대한 투쟁 → 자기 보존을 위해 계약 → 국가</p>
-      <p><span class="l">로크</span> : 평등·자유·집행권 → 생명과 재산 보호를 위해 입법부에 양도 → 못 지키면 저항권</p>
-      <p><span class="r">루소</span> : 평화로운 자연 상태 → 사유 재산 증가로 불평등과 예속 → 벗어나려고 사회 계약 → 국가</p>
-      <p class="common-line">공통점: 세 사람 모두 사람들이 <b>계약</b>을 맺어 국가를 형성한다고 본다</p>
+      <p><span class="h">홉스</span> : 만인의 만인에 대한 투쟁(선악의 공통 기준 없음) → 자기 보존을 위해 계약 → 절대적 주권자에게 양도</p>
+      <p><span class="l">로크</span> : 비교적 평화롭지만 공정한 재판관이 없음 → 자연법 집행권을 입법부에 양도 → 못 지키면 저항권</p>
+      <p><span class="r">루소</span> : 평화로운 자연 상태 → 사유 재산 증가로 불평등과 예속 → 자유 회복을 위해 사회 계약 → 주권은 국민</p>
+      <p class="common-line">공통점: 세 사람 모두 개인들이 <b>자발적 합의(계약)</b>로 국가를 세운다고 본다 ↔ 아리스토텔레스: 국가는 인간의 본성에 의해 <b>자연스럽게</b> 형성</p>
     </div>
   </section>
+
+</div><!-- /view-learn -->
+
+  <!-- ================= PRACTICE (문제 풀기) ================= -->
+  <div id="view-practice" hidden>
+    <section class="practice-hero">
+      <span class="hero-tag">학력평가 기출 변형</span>
+      <h1>문제 풀기</h1>
+      <p>실제 학력평가에 나온 문제를 바꿔 만든 문제입니다. 풀어 본 뒤 해설로 선지를 하나씩 확인해 봅시다.</p>
+    </section>
+    <div id="prob-list"></div>
+  </div>
 
   <footer>
     <div>현대사회와 윤리 Ⅳ-02 시민성과 윤리 &middot; 시민과 국가의 관계</div>
@@ -760,27 +887,27 @@
   var CMP = {
     nature: {
       q: 'Q. 국가가 없는 자연 상태는 어떤 모습일까?',
-      h: '<b>&lsquo;만인의 만인에 대한 투쟁&rsquo;</b> 상태',
-      l: '사람들이 <b>평등, 자유 및 집행권</b>을 가진 상태',
+      h: '<b>&lsquo;만인의 만인에 대한 투쟁&rsquo;</b> 상태<br><span class="none">→ 공통 권력이 없어 선악(옳고 그름)의 공통 기준도 없음</span>',
+      l: '사람들이 <b>평등, 자유 및 집행권</b>을 가진 <b>비교적 평화로운</b> 상태<br><span class="none">→ 하지만 공동의 법과 공정한 재판관이 없음</span>',
       r: '<b>평화로운</b> 상태'
     },
     problem: {
       q: 'Q. 자연 상태에서 무엇이 문제가 될까?',
       h: '서로 싸우는 투쟁 속에서 <b>자기 보존</b>(살아남기)이 위태로움',
-      l: '<b>생명과 재산</b>을 제대로 보호받기 어려움',
-      r: '<b>사유 재산이 증가</b>하면서 점차 <b>불평등과 예속</b> 상태에 놓이게 됨'
+      l: '<b>공정한 재판관</b>이 없어 각자가 자연법의 재판관이 되므로 <b>생명·자유·재산</b>이 확실하게 보장되지 않음',
+      r: '<b>사유 재산이 증가</b>하면서 점차 <b>불평등하고 불안정한</b> 상태, 곧 <b>예속</b> 상태에 놓이게 됨'
     },
     reason: {
       q: 'Q. 사람들은 왜 계약을 맺을까?',
-      h: '<b>자기 보존</b>을 위해 계약을 맺고 국가를 형성함',
-      l: '<b>생명과 재산을 보호받기 위해</b> 평등·자유·집행권을 입법부가 처리하도록 사회의 수중에 <b>양도</b>함',
-      r: '<b>불평등과 예속 상태를 벗어나기 위해</b> 사회 계약을 맺고 국가를 형성함'
+      h: '<b>자기 보존</b>과 <b>평화</b>를 위해 자연권을 <b>절대적 주권자</b>에게 넘겨줌',
+      l: '<b>생명과 재산을 보호받기 위해</b> <b>자연법 집행권(처벌권)</b>을 포기하고 입법부가 처리하도록 사회의 수중에 <b>양도</b>함',
+      r: '<b>생명을 보존</b>하고 <b>자유를 회복</b>하기 위해, 곧 불평등과 예속에서 벗어나기 위해 사회 계약을 맺음'
     },
     after: {
       q: 'Q. 국가가 생긴 뒤에는?',
-      h: '자기 보존을 위해 계약으로 <b>국가를 형성</b>함',
-      l: '정부가 생명과 재산을 지키지 못하면 시민은 <b>저항권</b>을 행사할 수 있음<br><span class="none">→ 계약을 파기하고 자기방어 가능 · 이후 시민불복종 운동에 영향</span>',
-      r: '사회 계약으로 <b>국가를 형성</b>하여 불평등과 예속에서 벗어남'
+      h: '주권자는 <b>절대적</b> 권력을 가짐<br><span class="none">→ 주권은 나눌 수 없고, 시민은 저항할 수 없음</span>',
+      l: '<b>입법권과 집행권의 분립</b>에 따라 운영되며, 정부가 생명과 재산을 지키지 못하면 시민은 <b>저항권</b>을 행사할 수 있음<br><span class="none">→ 계약을 파기하고 자기방어 가능 · 이후 시민불복종 운동에 영향</span>',
+      r: '<b>주권은 국민에게</b> 있고, 정부는 <b>일반 의지를 대행</b>함'
     }
   };
   var cmpTabs = document.getElementById('cmp-tabs');
@@ -834,6 +961,16 @@
       type:'who', quote:'불평등과 예속 상태를 벗어나기 위해 사회 계약을 맺고 국가를 형성하게 돼.',
       ans:'r',
       exp:'루소입니다. 루소에게 사회 계약은 사유 재산 증가로 생긴 <b>불평등과 예속</b>에서 벗어나기 위한 것입니다.'
+    },
+    {
+      type:'who', quote:'자연 상태에는 다툼을 공평하게 판결해 줄 재판관이 없어.',
+      ans:'l',
+      exp:'로크입니다. <b>공정한 재판관이 없다</b>는 말은 로크를 찾는 대표 단서입니다. 그래서 모든 사람이 스스로 자연법의 재판관이 되고, 권리가 불안정해집니다.'
+    },
+    {
+      type:'who', quote:'공통 권력이 없는 곳에는 옳고 그름의 기준도 없어.',
+      ans:'h',
+      exp:'홉스입니다. 홉스는 공통 권력이 없는 자연 상태에는 <b>선악(정의와 부정의)의 공통 기준</b>이 없다고 보았습니다.'
     }
   ];
 
@@ -917,26 +1054,189 @@
   }
   renderQ();
 
+  /* ---------- practice problems ---------- */
+  var FIG = {
+    '갑': '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="#EAF0F7" stroke="#B6CBE6" stroke-width="2"/><path d="M12 60c2-14 10-19 20-19s18 5 20 19" fill="#8FA8C8"/><circle cx="32" cy="26" r="12" fill="#F6DCC4"/><path d="M19 25c0-10 6-14 13-14s13 4 13 14c-3-4-6-6-13-6s-10 2-13 6z" fill="#6B5B4B"/><circle cx="27.5" cy="27" r="1.6" fill="#333"/><circle cx="36.5" cy="27" r="1.6" fill="#333"/><path d="M28 32q4 3 8 0" stroke="#333" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>',
+    '을': '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="#F7F1E8" stroke="#E2D3BC" stroke-width="2"/><path d="M12 60c2-14 10-19 20-19s18 5 20 19" fill="#C9A87C"/><circle cx="32" cy="26" r="12" fill="#F6DCC4"/><path d="M18 30c-1-13 6-19 14-19s15 6 14 19c-2-6-3-9-5-10-3 3-12 3-18 0-2 1-3 4-5 10z" fill="#A9A9A9"/><circle cx="27.5" cy="27" r="1.6" fill="#333"/><circle cx="36.5" cy="27" r="1.6" fill="#333"/><path d="M28 32q4 3 8 0" stroke="#333" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>'
+  };
+  var LEVEL_NAME = { 1:'하', 2:'중', 3:'상' };
+  function levelHtml(lv){
+    var stars = '';
+    for(var k = 1; k <= 3; k++) stars += k <= lv ? '★' : '☆';
+    return '<span class="prob-lv lv-' + lv + '" title="난이도 ' + LEVEL_NAME[lv] + '"><span class="st" aria-hidden="true">' + stars + '</span>' + LEVEL_NAME[lv] + '</span>';
+  }
+  var CIRC = ['①','②','③','④','⑤'];
+
+  var PROBS = [
+    {
+      kind:'speech', pt:'3점', level:2, src:'2024년 6월 고2 전국연합학력평가 생활과 윤리 6번',
+      q:'갑, 을 사상가의 입장으로 적절하지 <u>않은</u> 것은?',
+      who:{ '갑':'h', '을':'l' },
+      text:{
+        '갑':'국가가 없는 상태에는 <span class="clue">옳고 그름을 가를 기준이 없고</span>, 오직 <span class="clue">힘과 속임수만</span> 통할 뿐입니다. 이 <span class="clue">끔찍한 싸움</span>에서 벗어나 <span class="clue">평화와 안전</span>을 지키기 위해, 사람들은 각자의 의지를 하나로 모아 <span class="clue">공통의 권력</span>을 세웁니다.',
+        '을':'국가가 없는 상태에는 다툼을 가려 줄 <span class="clue">공정한 기준과 재판관</span>, 그리고 판결을 <span class="clue">집행할 권력</span>이 없습니다. 그래서 사람들은 <span class="clue">자신의 재산을 지키기 위해</span> 서로 힘을 합쳐 정치 사회를 만듭니다.'
+      },
+      opts:[
+        ['갑: 국가는 시민의 생명과 안전을 지켜 주어야 한다.', true, '홉스는 <b>안전 보장과 평화 유지</b>를 국가의 역할로 봅니다.'],
+        ['갑: 공통 권력이 세워지기 전에도 옳음과 그름의 구분은 존재한다.', false, '홉스는 공통 권력이 없는 자연 상태에는 <b>옳고 그름(정의·부정의)의 기준이 없다</b>고 봅니다. 제시문 첫 문장과 정반대입니다.'],
+        ['을: 국가는 시민의 재산권을 보호할 책임이 있다.', true, '로크는 국가가 <b>생명권·자유권·재산권</b>을 보호해야 한다고 봅니다.'],
+        ['을: 국가는 구성원 사이의 분쟁을 해결하는 권력을 지닌다.', true, '자연 상태에 없던 <b>공정한 재판관과 집행 권력</b>을 국가가 맡아 분쟁을 해결합니다.'],
+        ['갑, 을: 국가는 개인들의 합의를 통해 인위적으로 만들어진다.', true, '둘 다 사회 계약론자이므로 국가는 <b>개인 간 합의(계약)</b>로 만들어진다고 봅니다.']
+      ],
+      ans:1
+    },
+    {
+      kind:'passage', pt:'3점', level:2, src:'2024년 10월 고2 전국연합학력평가 생활과 윤리 14번',
+      q:'갑, 을 사상가의 입장으로 적절한 것만을 &lt;보기&gt;에서 고른 것은?',
+      who:{ '갑':'l', '을':'h' },
+      text:{
+        '갑':'자연 상태의 인간은 <span class="clue">자유롭고 평등</span>합니다. 하지만 <span class="clue">공정한 재판관이 없기</span> 때문에 자신의 자유와 재산을 지키기가 불안합니다. 그래서 사람들은 <span class="clue">자연법을 어긴 자를 스스로 처벌하던 권리</span>를 내려놓고 이를 국가에 맡깁니다.',
+        '을':'자연 상태에는 <span class="clue">모두를 두렵게 할 공통 권력</span>이 없어, 모든 사람이 모든 사람과 싸우게 됩니다. 사람들은 <span class="clue">자신을 보존</span>하고 만족스럽게 살기 위해 서로 약속을 맺고, 가진 모든 권력과 힘을 <span class="clue">단 하나의 인격</span>에게 넘겨줍니다.'
+      },
+      bogi:[
+        ['ㄱ','갑: 국가 권력에 맞서는 시민의 저항은 어떤 경우에도 허용되지 않는다.', false, '로크는 정부가 시민의 권리를 지키지 못하면 <b>저항권</b>을 행사할 수 있다고 봅니다. 저항을 인정하지 않는 것은 홉스입니다.'],
+        ['ㄴ','갑: 자연 상태에서는 각 개인이 자연법을 어긴 사람을 처벌할 권리를 가진다.', true, '로크의 자연 상태에서 각 개인은 <b>자연법 집행권(처벌권)</b>을 가집니다. 계약을 통해 이 권리를 포기하고 국가에 맡깁니다.'],
+        ['ㄷ','을: 평화와 안전을 위해서는 주권을 여러 기관에 나누어야 한다.', false, '홉스는 주권이 <b>나뉠 수 없는 절대적인 것</b>이라고 봅니다. 권력을 나누는 것(입법권과 집행권의 분립)은 로크의 입장입니다.'],
+        ['ㄹ','갑, 을: 국가는 자연 상태의 개인들이 스스로 합의하여 세운 것이다.', true, '로크와 홉스 모두 국가는 개인들의 <b>자발적 합의</b>로 세워진다고 봅니다.']
+      ],
+      opts:[['ㄱ, ㄴ'],['ㄱ, ㄷ'],['ㄴ, ㄷ'],['ㄴ, ㄹ'],['ㄷ, ㄹ']],
+      ans:3
+    },
+    {
+      kind:'passage', pt:'3점', level:3, src:'2025년 6월 고2 전국연합학력평가 생활과 윤리 17번',
+      q:'갑, 을 사상가의 입장으로 가장 적절한 것은?',
+      who:{ '갑':'l', '을':'h' },
+      text:{
+        '갑':'자연 상태에는 다툼을 <span class="clue">공평하게 판결할 재판관이 없어서</span>, <span class="clue">모든 사람이 저마다 자연법의 재판관</span> 노릇을 합니다. 이런 불안정한 처지에서 벗어나 <span class="clue">생명, 자유, 재산</span>을 지키기 위해 사람들은 하나의 공동체를 이루기로 합의합니다.',
+        '을':'자연 상태에는 <span class="clue">모두를 두려움에 떨게 할 공통 권력</span>이 없으므로, 사람들은 <span class="clue">만인의 만인에 대한 투쟁</span> 속에 놓입니다. 이 비참함에서 벗어날 유일한 길은 각자의 모든 권력과 힘을 <span class="clue">한 사람 또는 하나의 합의체</span>에 맡기는 것입니다.'
+      },
+      opts:[
+        ['갑: 시민은 자신의 재산을 침해하는 정부에 저항할 권리가 있다.', true, '로크는 정부가 생명·자유·재산을 침해하면 시민이 <b>저항권</b>을 행사할 수 있다고 봅니다.'],
+        ['갑: 자연 상태는 어떤 다툼도 일어나지 않는 완전한 평화 상태이다.', false, '로크의 자연 상태는 <b>비교적</b> 평화롭지만, 공평한 재판관이 없어 다툼이 생기면 해결하기 어려운 <b>불안정한</b> 상태입니다.'],
+        ['을: 자연 상태의 개인에게는 군주의 명령을 따를 의무가 있다.', false, '홉스의 자연 상태에는 아직 <b>주권자(군주)가 없습니다.</b> 복종 의무는 계약으로 국가가 세워진 뒤에 생깁니다.'],
+        ['을: 자연 상태의 합리적인 개인들은 서로를 믿고 의지하며 살아간다.', false, '홉스의 자연 상태는 <b>만인의 만인에 대한 투쟁</b> 상태이므로 서로를 믿지 못하고 경계합니다.'],
+        ['갑, 을: 국가는 인간의 정치적 본성에 의해 저절로 생겨난다.', false, '이것은 <b>아리스토텔레스</b>의 입장입니다. 사회 계약론자는 국가가 개인들의 <b>합의</b>로 만들어진다고 봅니다.']
+      ],
+      ans:0
+    }
+  ];
+
+  var probList = document.getElementById('prob-list');
+  probList.innerHTML = PROBS.map(function(p, i){
+    var body;
+    if(p.kind === 'speech'){
+      body = '<div class="speakers">' + ['갑','을'].map(function(w){
+        return '<div class="speaker ' + THEME_CLASS[p.who[w]] + '"><div class="speech">' + p.text[w] + '</div><div class="fig">' + FIG[w] + '<span class="nm">' + w + '</span></div></div>';
+      }).join('') + '</div>';
+    } else {
+      body = '<div class="passage">' + ['갑','을'].map(function(w){
+        return '<p class="' + THEME_CLASS[p.who[w]] + '"><span class="who-lbl">' + w + ':</span><span>' + p.text[w] + '</span></p>';
+      }).join('') + '</div>';
+    }
+    if(p.bogi){
+      body += '<div class="bogi">' + p.bogi.map(function(b){
+        return '<p><span class="mk">' + b[0] + '.</span><span>' + b[1] + '</span><span class="ox ' + (b[2] ? 't' : 'f') + '">' + (b[2] ? 'O' : 'X') + '</span></p>';
+      }).join('') + '</div>';
+    }
+    var reveal = '<div class="who-reveal">' + ['갑','을'].map(function(w){
+      var k = p.who[w];
+      return '<span class="who-chip ' + THEME_CLASS[k] + '"><img src="' + IMG[k] + '" alt="">' + w + ' = ' + NAME[k] + '</span>';
+    }).join('') + '</div>';
+    var choices = '<div class="choices">' + p.opts.map(function(o, j){
+      return '<button type="button" class="choice" data-j="' + j + '"><span class="n">' + CIRC[j] + '</span><span>' + o[0] + '</span></button>';
+    }).join('') + '</div>';
+    var exItems = (p.bogi || p.opts).map(function(o, j){
+      var lbl = p.bogi ? o[0] : CIRC[j], ok = p.bogi ? o[2] : o[1], why = p.bogi ? o[3] : o[2];
+      return '<li><span class="o ' + (ok ? 't' : 'f') + '">' + lbl + ' ' + (ok ? 'O' : 'X') + '</span><span>' + why + '</span></li>';
+    }).join('');
+    var explain = '<div class="explain"><div class="feedback"></div><b>선지 하나씩 따져 보기</b><ul>' + exItems + '</ul></div>';
+    return '<section class="card prob" id="prob-' + (i+1) + '" data-i="' + i + '">' +
+      '<div class="prob-head"><span class="prob-no">' + (i+1) + '</span><span class="prob-pt">' + p.pt + '</span>' + levelHtml(p.level) + '<span class="prob-src">출처: ' + p.src + ' (변형)</span></div>' +
+      '<p class="prob-q">' + p.q + '</p>' + body + reveal + choices +
+      '<div class="prob-tools"><button type="button" class="btn ghost" data-act="clue">🔍 단서 보기</button><button type="button" class="btn ghost" data-act="retry" hidden>다시 풀기</button></div>' +
+      explain + '</section>';
+  }).join('');
+
+  probList.addEventListener('click', function(e){
+    var card = e.target.closest('.prob');
+    if(!card) return;
+    var p = PROBS[+card.getAttribute('data-i')];
+    var tool = e.target.closest('[data-act]');
+    if(tool){
+      if(tool.getAttribute('data-act') === 'clue'){
+        var on = card.classList.toggle('show-clues');
+        tool.textContent = on ? '🔍 단서 숨기기' : '🔍 단서 보기';
+      } else {
+        card.classList.remove('done', 'show-clues');
+        card.querySelector('[data-act=clue]').textContent = '🔍 단서 보기';
+        tool.hidden = true;
+        Array.prototype.forEach.call(card.querySelectorAll('.choice'), function(b){
+          b.disabled = false; b.classList.remove('correct', 'wrong');
+          var r = b.querySelector('.res'); if(r) r.remove();
+        });
+      }
+      return;
+    }
+    var btn = e.target.closest('.choice');
+    if(!btn || btn.disabled) return;
+    var j = +btn.getAttribute('data-j'), ok = j === p.ans;
+    Array.prototype.forEach.call(card.querySelectorAll('.choice'), function(b){
+      b.disabled = true;
+      var k = +b.getAttribute('data-j');
+      if(k === p.ans){ b.classList.add('correct'); b.insertAdjacentHTML('beforeend', '<span class="res" aria-hidden="true">✔</span>'); }
+      else if(b === btn){ b.classList.add('wrong'); b.insertAdjacentHTML('beforeend', '<span class="res" aria-hidden="true">✘</span>'); }
+    });
+    var fb = card.querySelector('.feedback');
+    fb.className = 'feedback ' + (ok ? 'correct' : 'wrong');
+    fb.innerHTML = '<p class="lbl">' + (ok ? '정답입니다!' : '오답입니다. 정답은 ' + CIRC[p.ans] + '입니다.') + '</p><p>갑은 <b>' + NAME[p.who['갑']] + '</b>, 을은 <b>' + NAME[p.who['을']] + '</b>입니다. 색칠된 단서를 확인해 봅시다.</p>';
+    card.classList.add('done', 'show-clues');
+    card.querySelector('[data-act=clue]').textContent = '🔍 단서 숨기기';
+    card.querySelector('[data-act=retry]').hidden = false;
+  });
+
+  /* ---------- view switch ---------- */
+  var viewLearn = document.getElementById('view-learn');
+  var viewPractice = document.getElementById('view-practice');
+  var viewSwitch = document.querySelector('.view-switch');
+  function setView(v, keepScroll){
+    var pr = v === 'practice';
+    viewLearn.hidden = pr; viewPractice.hidden = !pr;
+    document.body.classList.toggle('practice', pr);
+    Array.prototype.forEach.call(viewSwitch.querySelectorAll('button'), function(b){
+      b.setAttribute('aria-selected', b.getAttribute('data-view') === v ? 'true' : 'false');
+    });
+    if(!keepScroll) window.scrollTo(0, 0);
+  }
+  viewSwitch.addEventListener('click', function(e){
+    var b = e.target.closest('button');
+    if(!b) return;
+    var v = b.getAttribute('data-view');
+    setView(v);
+    try{ history.replaceState(null, '', v === 'practice' ? '#practice' : location.pathname); }catch(err){}
+  });
+  if(location.hash === '#practice' || /^#prob-/.test(location.hash)) setView('practice', true);
+
   /* ---------- flowchart ---------- */
   var FLOW = [
     { k:'h', tag:'만인의 만인에 대한 투쟁', steps:[
-      ['자연 상태', '<b>&lsquo;만인의 만인에 대한 투쟁&rsquo;</b> 상태'],
+      ['자연 상태', '<b>&lsquo;만인의 만인에 대한 투쟁&rsquo;</b> 상태, <b>선악의 공통 기준</b> 없음'],
       ['문제', '투쟁 속에서 <b>자기 보존</b>이 위태로움'],
-      ['사회 계약', '자기 보존을 위해 <b>계약</b>을 맺음'],
+      ['사회 계약', '자기 보존과 평화를 위해 자연권을 <b>절대적 주권자</b>에게 양도'],
       ['국가', '<b>국가를 형성</b>함', 'end']
     ]},
     { k:'l', tag:'생명·재산 보호', steps:[
-      ['자연 상태', '<b>평등, 자유 및 집행권</b>을 가짐'],
-      ['문제', '<b>생명과 재산</b>을 보호받기 어려움'],
-      ['사회 계약', '평등·자유·집행권을 <b>입법부</b>가 처리하도록 사회의 수중에 <b>양도</b>'],
-      ['국가', '생명과 재산을 <b>보호</b>하는 정부', 'end'],
+      ['자연 상태', '<b>평등, 자유 및 집행권</b>을 가진 <b>비교적 평화로운</b> 상태'],
+      ['문제', '<b>공정한 재판관</b>이 없어 <b>생명·자유·재산</b>이 불안정'],
+      ['사회 계약', '<b>자연법 집행권</b>을 포기하고 <b>입법부</b>가 처리하도록 사회의 수중에 <b>양도</b>'],
+      ['국가', '생명과 재산을 <b>보호</b>하는 정부 (<b>입법권과 집행권의 분립</b>)', 'end'],
       ['저항권', '정부가 지키지 못하면 <b>저항권</b> 행사 → 계약 파기·자기방어 → 시민불복종에 영향', 'extra']
     ]},
     { k:'r', tag:'불평등과 예속', steps:[
       ['자연 상태', '<b>평화로운</b> 상태'],
       ['문제', '<b>사유 재산 증가</b> → 점차 <b>불평등과 예속</b>'],
-      ['사회 계약', '불평등과 예속을 <b>벗어나기 위해</b> 사회 계약'],
-      ['국가', '<b>국가를 형성</b>함', 'end']
+      ['사회 계약', '생명 보존과 <b>자유 회복</b>을 위해 사회 계약'],
+      ['국가', '<b>국가를 형성</b>함', 'end'],
+      ['주권', '<b>주권은 국민</b>에게 있고, 정부는 <b>일반 의지</b>를 대행', 'extra']
     ]}
   ];
   var ARROW = '<div class="fc-arrow{X}" aria-hidden="true"><svg viewBox="0 0 18 22"><path d="M9 0 V13" stroke="currentColor" stroke-width="2.5"/><polygon points="3,12 15,12 9,22" fill="currentColor"/></svg></div>';
